@@ -6,6 +6,12 @@ Author: Richard Clark - http://richclarkdesign.com
 Twitter: @rich_clark
 */
 
+@import url(https://fonts.googleapis.com/css?family=Kanit:400,700,300);
+
+* {
+    font-family: 'Kanit' !important;
+}
+
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -136,7 +142,6 @@ header nav ul li {
 }
 
 header nav ul a {
-    font-family: tahoma ;
     font-size: 16px;
     color: #111;
     line-height: 60px;

@@ -21,18 +21,13 @@
                                     <a class="btn btn-default" href="admin1.php" role="button">หน้าหลัก</a>
                                     <button type="button" class="btn btn-primary">จัดการข้อมูลชั้น / ห้อง</button>
                                     </div>
-
-
             </div>
                 <?php
                 if (isset($_SESSION['username'])) {
                     ?>
-
                     <h3 align="center"><img src = "Images/Room.png" width='120' border="0"><br>จัดการข้อมูลชั้น / ห้อง</td></h3><br>
-
-
-                <div class="container" ng-app="myApp" ng-controller="customersController">
-                <table align="center" width="100%">
+                    <div class="container" ng-app="myApp" ng-controller="customersController">
+                    <table align="center" width="100%">
                     <tr align="center">
                         <td align="center">
                             <table align="100">
@@ -101,16 +96,12 @@
                     </tr>
                 </table>
             <br>
-
           <?php
 
              $strSQL = "SELECT * FROM room ";
              mysql_query("SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection =    'utf8',character_set_database = 'utf8', character_set_server = 'utf8'", $objConnect);
             $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-
             ?>
-
-          
 
     <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
@@ -120,7 +111,6 @@
                 <th> <div align="center">เลขที่</div></th>
 
                 <th> <div align="center">ปีการศึกษา </div></th>
-                <th> <div align="center">เลขที่แผนการเรียน </div></th>
                 <th> <div align="center">เลขที่วิชา </div></th>
                 <th> <div align="center">เลขที่ห้อง</div></th>
                 <th> <div align="center">แก้ไข </div></th>
@@ -129,39 +119,30 @@
         <tbody>
 
             <?php while($objResult = mysql_fetch_array($objQuery)) { ?>
-
                 <tr>
                     <td><div align="center"><?php echo $objResult["rno"];?></div></td>
                     <td><div align="center"><?php echo $objResult["rname"];?></div></td>
-                    <td><div align="center"><?php echo $objResult["classno"];?></div></td>
                     <td><div align="center"><?php echo $objResult["Educyear"];?></div></td>
                     <td><div align="center"><?php echo $objResult["levelno"];?></div></td> 
                     <td><div align="center"><?php echo $objResult["Majorno"];?></div></td>
                     <td><div align="center"><?php echo $objResult["Roomno"];?></div></td>
-
                     <td>
                         <div align="center">
-                          
                                 <a href="includes/Room.Edit.php?rno=<?php echo $objResult["rno"];?>" >  
                                 <button type="button" class="btn btn-warning">
                                 <span class="glyphicon glyphicon-pencil"></span>แก้ไข</button></a>
-                           
-
-                            <a href="JavaScript:if(confirm('ต้องการลบข้อมูลนี้หรือไม่ ?') == true){window.location='includes/Room.Del.php?rno=<?php echo $objResult["rno"];?>';}">
-                                <button type="button" class="btn btn-danger">
-                                    <span class="glyphicon glyphicon-trash"></span>                                
-                                       Delete
-                                </button>
+                                <a href="JavaScript:if(confirm('ต้องการลบข้อมูลนี้หรือไม่ ?') == true){window.location='includes/Room.Del.php?rno=<?php echo $objResult["rno"];?>';}">
+                                    <button type="button" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-trash"></span>                              
+                                            Delete
+                                    </button>
                             </a>
                         </div>
                     </td>
                 </tr>
-
             <?php } ?>
-
         </tbody>
     </table>
-
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">

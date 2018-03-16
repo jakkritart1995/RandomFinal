@@ -11,8 +11,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
             
 <?php
-
-
 function Connect()
 	{
 			$servername = "localhost";
@@ -29,8 +27,6 @@ function Connect()
 			}
 			return $conn;
 	}
-
-
 //////////////////////////////////////////////////////////////DateDiff/////////////////////////////////////////////////////////////////////
 function DateDiff($dateprimstart,$dateprimend,&$examdate)
 	{
@@ -61,12 +57,9 @@ function DateDiff($dateprimstart,$dateprimend,&$examdate)
 		}
 		return $days;
 	}
-
-
 //////////////////////////////////////////////////////////////CreateLevel/////////////////////////////////////////////////////////////////////
 function CreateLevel(&$level,$conn)
 	{
-		
 		$sql = "SELECT levelno, majorno,count(rno) AS countrno,min(rno) AS minrno,max(rno) AS maxrno  FROM room Group By levelno,majorno order by levelno,majorno";
 		$result = $conn->query($sql);
 		$level = array();
@@ -169,9 +162,6 @@ function CreateLevelnum($conn)
 						return $subj;
 			}
 	
-
-
-
 
 function Findwar($conn, &$maxlno, &$maxlnoprim, &$maxsnoprim, &$maxlnosec)
 {
@@ -302,8 +292,6 @@ function calNDay($MaxNsubjprim,$MaxNsubjsec,$conn,&$nDayprim,&$nDaysec,$timeprim
 			 }*/
 
 
-
-
 		$nDayprim2 = DateDiff($dateprimstart,$dateprimend,$examdateprim); //echo "$nDayprim2"; echo "$nDayprim1";
 		//echo "จำนวนวันที่ใช้สอบ $nDayprim2 วัน";
 		//echo "<br>";
@@ -421,8 +409,6 @@ function calNDay($MaxNsubjprim,$MaxNsubjsec,$conn,&$nDayprim,&$nDaysec,$timeprim
 		}
 	}
 
-
-
 function FisherRandom($i, $j, $Nsubj){
 	//echo "$Nsubj";
 	$Fisher = array();
@@ -455,13 +441,7 @@ function FisherRandom($i, $j, $Nsubj){
 		}
 	}
 	return $Fisher;
-	
-	
-
-
-
 }
-
 
 function SwitchSubj($maxlnoprim,$maxlnosec,$Nsubj,$subj,&$NewSubj_prim,&$NewSubj_sec){
 	
@@ -494,8 +474,6 @@ function SwitchSubj($maxlnoprim,$maxlnosec,$Nsubj,$subj,&$NewSubj_prim,&$NewSubj
 	//echo "NewSubj_prim[0][0][0] =".$NewSubj_prim[0][0][0];
 //echo "NewSubj_prim[0][2][0] =".$NewSubj_prim[0][2][0]."<br>";
 	//echo "NewSubj_prim[5][1][0] =".$NewSubj_prim[5][1][0]."<br>";
-
-
 	
 }
 
@@ -713,19 +691,12 @@ function AssignType1_prim($maxlnoprim,$nDayprim,$levelnum,$timeprim,$level,&$sta
 			if ($sno == $Nsubj[$l][$type]) {
 				break;
 			}
-
-
 		}
 
 		//echo "จำนวนวัน l = $l ไม่พอ";
-			
-		
+
 	}
-		
-
 }
-
-
 
 function AssignType0_sec($maxlnoprim,$maxlnosec,$nDaysec,$levelnum,$timesec,$level,&$stable_sec,$NewSubj_sec,$Nsubj){
 	//echo "stable_sec[0][0][0] =".$stable_sec[0][0][0]."<br>";
@@ -869,11 +840,7 @@ function AssignType1_sec($maxlnoprim,$maxlnosec,$nDaysec,$levelnum,$timesec,$lev
 		}
 
 		//echo "จำนวนวัน l = $l ไม่พอ";
-			
-		
 	}
-		
-
 }
 
 
@@ -924,7 +891,6 @@ function SaveTable_sec($educyear,$sem,$nDaysec,$timesec,$nroomsec,&$stable_sec,$
 	}
 	//echo "$strSQL";
 
-
 	if ($conn->query($strSQL) === TRUE){
 							 echo "New record created successfully 1";
 						} else {
@@ -932,10 +898,6 @@ function SaveTable_sec($educyear,$sem,$nDaysec,$timesec,$nroomsec,&$stable_sec,$
 							}
 
 }
-
-
-
-
 
 function ShowTable($conn,$levelnum){
 
@@ -1002,7 +964,6 @@ function ShowTable($conn,$levelnum){
 							                 </tr>
 								</tbody>
 
-
 						  <?php } ?>
 					<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
 				    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -1011,10 +972,6 @@ function ShowTable($conn,$levelnum){
 				            $('#example').DataTable();
 				        } );
 				    </script>
-
-
-
-
  
 	<?php 
 	//echo "$minrnosec";

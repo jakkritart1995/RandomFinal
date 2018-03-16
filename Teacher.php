@@ -75,6 +75,7 @@
              mysql_query("SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection =    'utf8',character_set_database = 'utf8', character_set_server = 'utf8'", $objConnect);
             $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
             ?>
+            
     <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -89,7 +90,9 @@
         </thead>
         <tbody>
 
+            <?php $data = []; ?>
             <?php while($objResult = mysql_fetch_array($objQuery)) { ?>
+            <?php array_push($data, $objResult); ?>
 
                 <tr>
                     <td><div align="center"><?php echo $objResult["tno"];?></div></td>
@@ -121,6 +124,37 @@
 
         </tbody>
     </table>
+
+
+    <!-- =================================================================== -->
+    <div id="printableArea" style="display: none">
+      <h1>รายชื่ออาจารย์</h1>
+      <table class="table-bordered" style="width: 100%;">
+           <?php foreach ($data as $i => $object): ?>
+               <tr style="border: solid 1px black;">
+                    <td><div align="center"><?php echo $object["tno"];?></div></td>
+                    <td><div align="left"><?php echo $object["tname"];?></div></td>
+                    <td><div align="center"><?php echo $object["section"];?></div></td>
+               </tr>
+           <?php endforeach; ?>
+      </table>
+    </div>  
+
+    <input type="button" onclick="printDiv('printableArea')" value="พิมพ์รายชื่ออาจารย์" />
+
+    <script>
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+    </script>
+    <!-- =================================================================== -->
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
